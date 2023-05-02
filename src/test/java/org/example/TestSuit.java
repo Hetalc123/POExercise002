@@ -64,14 +64,20 @@ public class TestSuit extends BaseTest{
         loginPage.enterLoginDetails();
         //go to the product needs to be refered
         homePage.clickOnProduct();
+        //click on email
         appleMacbookPage.clickOnEmailAFriend();
+        //fill details
         emailAFriendPage.emilAFriend();
+        //send email
         emailSentPage.printEmailSentMessage();
     }
     @Test
     public void g_toVerifyRegisteredUserShouldBeAbleToVote(){
+        //click on login
         homePage.clickOnLoginButton();
+        //fill login details
         loginPage.enterLoginDetails();
+        //go to communityPoll
         homePage.communityPoll();
         homePage.communityPollVoteMessage();
     }
