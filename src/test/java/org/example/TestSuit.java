@@ -14,8 +14,6 @@ public class TestSuit extends BaseTest{
     RegistrationResultPage registrationResultPage = new RegistrationResultPage();
     LoginPage loginPage = new LoginPage();
     EmailSentPage emailSentPage = new EmailSentPage();
-    NikePage nikePage = new NikePage();
-    AdidasPage adidasPage = new AdidasPage();
     NewReleasePage newReleasePage = new NewReleasePage();
     BuildYourOwnComputerPage buildYourOwnComputerPage = new BuildYourOwnComputerPage();
     CheckoutPage checkoutPage = new CheckoutPage();
