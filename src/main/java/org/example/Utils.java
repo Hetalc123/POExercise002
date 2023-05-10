@@ -50,8 +50,8 @@ public class Utils extends BasePage{
         Select select = new Select(driver.findElement(by));
         select.selectByIndex(num);
     }
-    public static void searchbar(String text) {
-       driver.findElement(By.xpath("input[@type='text']")).sendKeys(text);
+    public static void searchbar(By by, String text) {
+       driver.findElement(by).sendKeys(text);
     }
     public static void waitForInvisibility(By by, int time){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));

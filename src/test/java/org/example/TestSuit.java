@@ -108,12 +108,7 @@ public class TestSuit extends BaseTest{
     @Test
     public void verifyUserShouldBeAbleToSearchProductAccordingly(){
         //search the product
-        homePage.searchTheProductAndClikOnSearchButton();
-        //verify products are displayed accordingly
-        nikePage.verifyProductOnPageAreFromNike();
-        //search another product
-        homePage.searchAdidasProductAndClickOnSearchButton();
-        adidasPage.verifyAdidasProductsAreDisplayed();
+        homePage.verifyProductUserShouldBeAbleToSearchProductAccordingly("Apple","nike");
     }
     @Test
     public void verifyGuestUserShouldBeAbleToLeaveComment(){

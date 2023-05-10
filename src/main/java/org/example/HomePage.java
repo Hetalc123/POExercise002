@@ -139,11 +139,23 @@ public class HomePage extends Utils {
         softAssert.assertAll();
     }
 
-    public void searchTheProductAndClikOnSearchButton() {
+    public void verifyProductUserShouldBeAbleToSearchProductAccordingly(String text,String expected) {
         //type product name in searchbar
-        typeText(By.xpath("//input[@type='text']"), "Nike");
+        searchbar(By.xpath("//input[@type='text']"),text);
         //click on search Button
         clickOnElement(By.xpath("//button[@type='submit']"));
+        List<WebElement> productList = driver.findElements(By.cssSelector("h2.product-title"));
+        String actualResult = null;
+        int i = 0;
+        //run a loop to confirm all products are from nike
+        for (WebElement e : productList) {
+            System.out.println(e.getText());
+            if(e.getText().contains(text)){
+                i++;
+                actualResult = text;
+            }
+        }System.out.println("Total Elements Checked "+ i);
+        Assert.assertEquals(actualResult,expected);
     }
 
     public void searchAdidasProductAndClickOnSearchButton() {
