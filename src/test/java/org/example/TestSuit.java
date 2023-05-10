@@ -1,5 +1,6 @@
 package org.example;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class TestSuit extends BaseTest{
@@ -13,22 +14,33 @@ public class TestSuit extends BaseTest{
     RegistrationResultPage registrationResultPage = new RegistrationResultPage();
     LoginPage loginPage = new LoginPage();
     EmailSentPage emailSentPage = new EmailSentPage();
+    NikePage nikePage = new NikePage();
+    AdidasPage adidasPage = new AdidasPage();
+    NewReleasePage newReleasePage = new NewReleasePage();
+    BuildYourOwnComputerPage buildYourOwnComputerPage = new BuildYourOwnComputerPage();
+    CheckoutPage checkoutPage = new CheckoutPage();
+    GuestCheckoutPage guestCheckoutPage = new GuestCheckoutPage();
+    ShippingPage shippingPage = new ShippingPage();
+    PaymentPage paymentPage = new PaymentPage();
+    PaymentCardPage paymentCardPage = new PaymentCardPage();
+    OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage();
+    FaceBookPage faceBookPage = new FaceBookPage();
     @Test
-    public void a_toVerifyNonRegisteredUserShouldNotBeAbleToVote(){
+    public void toVerifyNonRegisteredUserShouldNotBeAbleToVote(){
         //method to vote in communityPoll
         homePage.communityPoll();
         //print error message
         homePage.communityPollErrorMessage();
     }
     @Test
-    public void b_toVerifyProductsInCompareList(){
+    public void toVerifyProductsInCompareList(){
         //ad two poducts in comparelist
         homePage.addProductsInCompareList();
         //confirm products in comparelist
         compareListPage.checkProductsInCompareList();
     }
     @Test
-    public void c_toVerifyNonRegisteredUserShouldNotBeAbleToReferAProductToFriend(){
+    public void toVerifyNonRegisteredUserShouldNotBeAbleToReferAProductToFriend(){
      //click on product
         homePage.clickOnProduct();
         //click on email a friend
@@ -39,7 +51,7 @@ public class TestSuit extends BaseTest{
      emailAFriendPage.printAnErrorMessage();
     }
     @Test
-    public void d_toVerifyProductInShoppingCart(){
+    public void toVerifyProductInShoppingCart(){
         //click on electronics category
     homePage.clickOnElectronics();
     //click on product to add in cart
@@ -48,7 +60,7 @@ public class TestSuit extends BaseTest{
     shoppingCartPage.confirmTheProductInShoppingCart();
     }
     @Test
-    public void e_toVerifyUserShouldBeAbleToRegisterSuccesfully(){
+    public void a_toVerifyUserShouldBeAbleToRegisterSuccesfully(){
         //click on register Button
         homePage.clickOnRegisterButton();
         //enter details in registration form
@@ -57,7 +69,7 @@ public class TestSuit extends BaseTest{
         registrationResultPage.verifyUserRegisteredSuccesfullyOrNot();
     }
     @Test
-    public void f_toverifyRegisteredUserShouldBeAbleToReferAProductToAFriend(){
+    public void toverifyRegisteredUserShouldBeAbleToReferAProductToAFriend(){
         //click on login button
         homePage.clickOnLoginButton();
         //enter login details
@@ -72,7 +84,7 @@ public class TestSuit extends BaseTest{
         emailSentPage.printEmailSentMessage();
     }
     @Test
-    public void g_toVerifyRegisteredUserShouldBeAbleToVote(){
+    public void toVerifyRegisteredUserShouldBeAbleToVote(){
         //click on login
         homePage.clickOnLoginButton();
         //fill login details
@@ -80,5 +92,62 @@ public class TestSuit extends BaseTest{
         //go to communityPoll
         homePage.communityPoll();
         homePage.communityPollVoteMessage();
+    }
+    @Test
+    public void printProductTitleForTheProductsOnHomePage(){
+        homePage.printProductTitle();
+    }
+    @Test
+    public void verifySearchButtonAlert(){
+        homePage.verifySearchButtonAlert();
+    }
+    @Test
+    public void verifyPriceListedInCurrencySelectedFromCurrencySelector(){
+        homePage.verifyProductPriceAreDisplayedAsPerSelectedCurrency();
+    }
+    @Test
+    public void verifyUserShouldBeAbleToSearchProductAccordingly(){
+        //search the product
+        homePage.searchTheProductAndClikOnSearchButton();
+        //verify products are displayed accordingly
+        nikePage.verifyProductOnPageAreFromNike();
+        //search another product
+        homePage.searchAdidasProductAndClickOnSearchButton();
+        adidasPage.verifyAdidasProductsAreDisplayed();
+    }
+    @Test
+    public void verifyGuestUserShouldBeAbleToLeaveComment(){
+        homePage.clickOnNewRelease();
+        newReleasePage.typeComment();
+        newReleasePage.verifyCommentAddedSuccessfullyOrNot();
+        newReleasePage.verifyCommentIsDisplayedAtLast();
+    }
+    @Test
+    public void verifyGuestUserShouldBeAbleToCheckoutSuccessfully(){
+        homePage.clickOnBuildYourOwnComputer();
+        buildYourOwnComputerPage.addDetails();
+        buildYourOwnComputerPage.addProductToCart();
+        buildYourOwnComputerPage.addProductToCart();
+        buildYourOwnComputerPage.clickOnShoppingCart();
+        shoppingCartPage.verifyBuildYourOwnComputerIsAddedToCart();
+        shoppingCartPage.clickOnTermsAndConditionsAndCheckout();
+        checkoutPage.clickOnCheckoutAsGuest();
+        guestCheckoutPage.fillCkeckoutDetails();
+        guestCheckoutPage.handlePopUp();
+        shippingPage.selectShippingOptionAndClickOnContinue();
+        paymentPage.selectPaymentOption();
+        paymentCardPage.enterCardDetails();
+        paymentCardPage.alertMessage();
+        guestCheckoutPage.confirmCheckout();
+        orderConfirmationPage.verifyOrderisSubmittedOrNot();
+    }
+    @Test
+    public void b_verifyWhenUserClicksOnFacebookUserShouldBeNavigatedToFacebookPage(){
+    homePage.clickOnFacebook();
+    faceBookPage.verifyFaceBookPage();
+    }
+    @Test
+    public void verifyVoteAlert(){
+        homePage.verifyVoteAlert();
     }
 }
