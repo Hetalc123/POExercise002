@@ -1,11 +1,15 @@
 package org.example;
 
+import org.testng.annotations.Test;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class LoadProp extends Utils{
+import static java.lang.System.getProperty;
+
+public class LoadProp{
 static Properties prop = new Properties();
 static FileInputStream input;
 static String propertiesFileLocation = "src/test/java/TestConfig/TestData.properties";
@@ -20,5 +24,8 @@ public String getProperty(String key){
     }
     return prop.getProperty(key);
 }
-
+    @Test
+    public void verifyMyLoadPro(){
+        System.out.println(getProperty("url"));
+    }
     }

@@ -5,13 +5,13 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest extends Utils{
     DriverManager driverManager = new DriverManager();
-    @BeforeMethod
-    public void setUp(){
-        driverManager.openBrowser();
-    }
-    @AfterMethod
-    public void tearDown(){
-        driverManager.closeBrowser();
-    }
+//    @BeforeMethod
+//    public void setUp(){
+//        driverManager.openBrowser();
+//    }
+//    @AfterMethod
+//    public void tearDown(){
+//        driverManager.closeBrowser();
+//    }
 
 }

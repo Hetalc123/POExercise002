@@ -1,11 +1,17 @@
 package org.example;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-import static java.lang.System.getProperty;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
+import static java.lang.System.getProperty;
+@Slf4j
 public class TestSuit extends BaseTest{
+
     HomePage homePage = new HomePage();
     CompareListPage compareListPage = new CompareListPage();
     AppleMacbookPage appleMacbookPage = new AppleMacbookPage();
@@ -122,7 +128,7 @@ public class TestSuit extends BaseTest{
         homePage.clickOnBuildYourOwnComputer();
         buildYourOwnComputerPage.addDetails();
         buildYourOwnComputerPage.addProductToCart();
-        buildYourOwnComputerPage.addProductToCart();
+       // buildYourOwnComputerPage.addProductToCart();
         buildYourOwnComputerPage.clickOnShoppingCart();
         shoppingCartPage.verifyBuildYourOwnComputerIsAddedToCart();
         shoppingCartPage.clickOnTermsAndConditionsAndCheckout();
@@ -145,9 +151,33 @@ public class TestSuit extends BaseTest{
     public void verifyVoteAlert(){
         homePage.verifyVoteAlert();
     }
-    @Test
-    public void verifyMyLoadPro(){
-        System.out.println(getProperty("url"));
+@Test
+    public void toVerifyIntegerNumnersInPair() {
+    int arr1[] = {1, 2, 9, 10, 4, 3, 10, 2, 4, 1,1};
+    Map<Integer, Integer> numbers = new HashMap<>();
+    for (int a : arr1) {
+        if (numbers.containsKey(a)) {
+            numbers.put(a, numbers.get(a) + 1);
+        } else {
+            numbers.put(a, 1);
+        }
     }
+    Set<Integer> keys = numbers.keySet();
+
+    int count = 0;
+    for (Integer a : keys) {
+        if (numbers.get(a) > 1) {
+        } else {
+            count = 0;
+            count++;
+        }
+    }
+    if (count %2==0) {
+        log.info("count,{}",count);
+        System.out.println("true");
+    } else {
+        System.out.println("false");
+    }
+}
 }
 
