@@ -16,9 +16,9 @@ public class FaceBookPage extends Utils{
         WebElement cookieAccept = driver.findElement(By.xpath("//*[@id=\'facebook\']/body/div[2]/div[1]/div/div[2]/div/div/div/div[2]/div/div[2]/div[1]/div"));
         cookieAccept.click();
         //switch to another child window
-        for (String newChildWindow: driver.getWindowHandles()){
-            driver.switchTo().window(newChildWindow);
-        }//click on close
+//        for (String newChildWindow: driver.getWindowHandles()){
+//            driver.switchTo().window(newChildWindow);
+//        }//click on close
         WebElement loginWindow = driver.findElement(By.xpath("//div[@class='x92rtbv x10l6tqk x1tk7jg1 x1vjfegm']"));
         loginWindow.click();
         //get current URL
@@ -48,7 +48,6 @@ public class FaceBookPage extends Utils{
         System.out.println(s);
         // verify WelCome Message
         String actualResult = getTextFromElement(By.xpath("//div[@class='topic-block-title']/h2"));
-        Assert.assertEquals(actualResult,"Welcome to Nopecommerce");
-        driver.quit();
+        Assert.assertEquals(actualResult,"Welcome to our store");
     }
 }
