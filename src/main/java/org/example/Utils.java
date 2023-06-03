@@ -1,17 +1,19 @@
 package org.example;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Utils extends BasePage{
@@ -29,9 +31,14 @@ public class Utils extends BasePage{
 
         return driver.findElement(by).getText();
     }
+    public static String currentTimeStamp() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyhhmmss");
+        return sdf.format(date);
+    }
 
     public static long datestamp() {
-        SimpleDateFormat sd = new SimpleDateFormat("dd.MM.yyyy HH.mm");
+        SimpleDateFormat sd = new SimpleDateFormat("ddMMyyhhmm");
         return sd.hashCode();
     }
     public static long timestamp() {
@@ -85,4 +92,18 @@ public class Utils extends BasePage{
     List<WebElement> list = new ArrayList<>(driver.findElements(by));
         return list;
     }
-}
+    public static void captureScreenshot( String fileName) {
+        //Convert web driver object to TakeScreenshot
+        TakesScreenshot scrShot = ((TakesScreenshot) driver);
+        //Call getScreenshotAs method to create image file
+        File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
+        //Move image file to new destination
+        File destFile = new File("src\\test\\Screenshots\\" + fileName + "" + currentTimeStamp() + ".png");
+        //Copy file at destination
+        try {
+            FileUtils.copyFile(SrcFile, destFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    }

@@ -3,6 +3,8 @@ package org.example;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
+import static java.lang.System.getProperty;
+
 public class TestSuit extends BaseTest{
     HomePage homePage = new HomePage();
     CompareListPage compareListPage = new CompareListPage();
@@ -143,4 +145,9 @@ public class TestSuit extends BaseTest{
     public void verifyVoteAlert(){
         homePage.verifyVoteAlert();
     }
+    @Test
+    public void verifyMyLoadPro(){
+        System.out.println(getProperty("url"));
+    }
 }
+
